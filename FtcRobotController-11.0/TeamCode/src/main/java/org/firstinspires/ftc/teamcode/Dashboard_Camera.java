@@ -4,7 +4,7 @@ import com.acmerobotics.dashboard.FtcDashboard;
 
 import org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion;
 import org.firstinspires.ftc.robotcore.external.ExportToBlocks;
-import org.firstinspires.ftc.robotcore.external.hardware.camera.BuiltinCameraDirection;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.vision.VisionPortal;
 
 public class Dashboard_Camera extends BlocksOpModeCompanion {
@@ -14,7 +14,7 @@ public class Dashboard_Camera extends BlocksOpModeCompanion {
 
         new VisionPortal.Builder()
                 .addProcessor(processor)
-                .setCamera(BuiltinCameraDirection.BACK)
+                .setCamera(hardwareMap.get(WebcamName.class, "Webcam"))
                 .build();
 
         FtcDashboard.getInstance().startCameraStream(processor, 0);

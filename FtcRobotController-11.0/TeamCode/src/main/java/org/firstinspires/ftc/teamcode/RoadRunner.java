@@ -1,14 +1,21 @@
 package org.firstinspires.ftc.teamcode;
 
+import org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
+import org.slf4j.Marker;
 
-public class RoadRunner extends LinearOpMode {
+import javax.annotation.meta.When;
+
+public class RoadRunner extends BlocksOpModeCompanion {
+
+
     /*
+
     To anybody who may see these docs in the future, these were written for the 25-26 season. email me if you see this.
     Good luck from someone who came who knows how long before you
     - John Storer
@@ -65,26 +72,12 @@ public class RoadRunner extends LinearOpMode {
                 //Your action code here
             })
 
-    The full documentation can be found at https://learnroadrunner.com/trajectories.html
+    The full documentation can be found at https://rr.brott.dev/docs/v1-0/builder-ref/
     Everything above current location sidebar is irrelevant unless tuning RR, for programming, focus on everything on the current page and below
 
 
      */
-    @Override
-    public void runOpMode() {
-        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        Pose2d startPose = new Pose2d(0, 0,Math.toRadians(90)); //x coord, y coord, heading
-        drive.setPoseEstimate(startPose);
 
-        Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d()) //See lines 15 and 16 for instructions
-                .strafeRight(10)
-                .forward(5)
-                .build();
 
-        waitForStart();
 
-        if(isStopRequested()) return;
-
-        drive.followTrajectory(myTrajectory);
-    }
 }
